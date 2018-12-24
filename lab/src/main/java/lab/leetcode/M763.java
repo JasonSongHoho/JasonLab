@@ -1,9 +1,5 @@
 package lab.leetcode;
 
-/**
- * @author jasonsong
- * 2018/12/22
- */
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

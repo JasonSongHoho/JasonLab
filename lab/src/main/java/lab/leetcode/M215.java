@@ -3,7 +3,9 @@ package lab.leetcode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * 在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
@@ -32,22 +34,16 @@ public class M215 {
         M215 m215 = new M215();
         int[] nums = {3, 2, 3, 1, 2, 4, 5, 5, 6};
         int k = 4;
-        m215.findKthLargest(nums, k);
+        LOGGER.info("result:{}", m215.findKthLargest(nums, k));
 
     }
 
     public int findKthLargest(int[] nums, int k) {
-        Integer[] tmp = new Integer[k];
+        List<Integer> list = new ArrayList<>();
         for (int i = 0; i < k; i++) {
-            tmp[i] = nums[i];
+            list.add(nums[i]);
         }
-        Arrays.sort(tmp, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });
-        List<Integer> list = new ArrayList<>(Arrays.asList(tmp));
+        list.sort((o1, o2) -> o2 - o1);
         for (int i = k; i < nums.length; i++) {
             int val = nums[i];
             for (int j = 0; j < k; j++) {
