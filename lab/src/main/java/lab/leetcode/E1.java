@@ -3,7 +3,6 @@ package lab.leetcode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,8 +17,10 @@ public class E1 {
 
     public static void main(String[] args) {
         E1 e1 = new E1();
-        int[] nums = {2, 1, 5, 3, 7, 11, 15};
+        int[] nums = {2, 1, 5, 3, 7, 10, 15};
+        int[] nums1 = {3, 2, 4};
         int target = 18;
+        int target1 = 6;
         LOGGER.info("result:{}", e1.twoSum(nums, target));
 
     }
@@ -39,23 +40,4 @@ public class E1 {
         return null;
     }
 
-
-    public int[] twoSum2(int[] nums, int target) {
-        int[] result = new int[2];
-        int total;
-        Arrays.sort(nums);
-        for (int i = 0, j = nums.length - 1; i < j; ) {
-            total = nums[i] + nums[j];
-            if (total == target) {
-                result[0] = i;
-                result[1] = j;
-                return result;
-            } else if (total > target) {
-                j--;
-            } else {
-                i++;
-            }
-        }
-        return null;
-    }
 }
