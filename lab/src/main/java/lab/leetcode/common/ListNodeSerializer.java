@@ -8,6 +8,12 @@ package lab.leetcode.common;
 
 public class ListNodeSerializer {
 
+    /**
+     * 链表反序列化
+     *
+     * @param data "[1, 2, 3, 3, 2, 1]"
+     * @return
+     */
     public static ListNode deserialize(String data) {
         String[] split = data.substring(1, data.length() - 1).replace(" ", "").split(",");
         ListNode listNode = new ListNode(Integer.valueOf(split[0]));
