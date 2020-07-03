@@ -72,7 +72,7 @@ public class CountDownLatchTest {
             System.out.println("other thread");
             long count = countDownLatch.getCount();
             if (count > 0) {
-                System.out.println("countDownLatch.countDown()");
+                System.out.println("countDownLatch.countDown(). count :"+count);
                 countDownLatch.countDown();
             }
         }

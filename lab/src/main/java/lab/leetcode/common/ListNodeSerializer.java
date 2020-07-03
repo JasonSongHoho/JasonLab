@@ -16,6 +16,9 @@ public class ListNodeSerializer {
      */
     public static ListNode deserialize(String data) {
         String[] split = data.substring(1, data.length() - 1).replace(" ", "").split(",");
+        if (split[0].isEmpty()){
+            return null;
+        }
         ListNode listNode = new ListNode(Integer.valueOf(split[0]));
         ListNode head = listNode;
         for (int i = 1; i < split.length; i++) {
