@@ -34,7 +34,7 @@ import lab.leetcode.common.TreeSerialize;
  * 2020/6/21
  */
 
-
+//todo redo
 public class H124 {
 
 
