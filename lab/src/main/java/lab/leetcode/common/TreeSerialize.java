@@ -11,6 +11,11 @@ import java.util.Queue;
 
 public class TreeSerialize {
 
+    /**
+     *
+     * @param data  such as "[9,25,25,null,-95,-95,null,-100,null,null,-15]"
+     * @return
+     */
     public static TreeNode deserialize(String data) {
         String[] nodes = data.substring(1, data.length() - 1).split(",");
         TreeNode root = getNode(nodes[0]);
