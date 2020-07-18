@@ -1,4 +1,4 @@
-package lab.leetcode;
+package lab.leetcode.bytedance;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +34,7 @@ import java.util.Map;
 
 public class M567 {
     public static void main(String[] args) {
+        //true
         System.out.println(checkInclusion("a", "ab"));
         //true start:3,end:4
         System.out.println(checkInclusion("ab", "eidbaooo"));
@@ -83,10 +84,11 @@ public class M567 {
                 if (start < 0) {
                     start = i;
                 } else if (i - start + 1 == s1.length()) {
-                    System.out.println("start:" + start + ",end:" + i);
+//                    System.out.println("start:" + start + ",end:" + i);
                     return true;
                 }
             } else {
+                //遍历已匹配字符串，将字符放回统计Map中，直到找到该字符c
                 for (int j = start; j < i; j++) {
                     char charJ = s2.charAt(j);
                     if (charJ == c) {
@@ -100,6 +102,50 @@ public class M567 {
             }
         }
         return false;
+    }
+
+
+    public static boolean checkInclusion1(String s1, String s2) {
+        Map<Character, Integer> countMap = new HashMap<>(s1.length());
+        for (int i = 0; i < s1.length(); i++) {
+            char c = s1.charAt(i);
+            Integer count = countMap.getOrDefault(c, 0);
+            countMap.put(c, count + 1);
+        }
+
+        for (int i = 0; i <= s2.length() - s1.length(); ) {
+            Map<Character, Integer> cacheMap = new HashMap<>(countMap);
+            StringBuilder temp = new StringBuilder();
+            for (int j = i; j < s2.length(); j++) {
+                char c = s2.charAt(j);
+                Integer count = cacheMap.get(c);
+                if (count == null) {
+                    //坏字符，从此位置往后寻找
+                    if (!countMap.containsKey(c)) {
+                        i = j + 1;
+                    } else {
+                        //找到已匹配字符串中的第一个出现位置，从该位置后匹配
+                        i = findStartIndex(temp.toString(), c, i);
+                    }
+                    break;
+                } else {
+                    temp.append(c);
+                    if (--count == 0) {
+                        cacheMap.remove(c);
+                        if (cacheMap.size() == 0) {
+                            return true;
+                        }
+                    } else {
+                        cacheMap.put(c, count);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private static int findStartIndex(String temp, char flag, int i) {
+        return temp.indexOf(flag) + i + 1;
     }
 
 
