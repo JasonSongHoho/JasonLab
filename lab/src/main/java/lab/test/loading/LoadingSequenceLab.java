@@ -1,4 +1,4 @@
-package lab.loading;
+package lab.test.loading;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

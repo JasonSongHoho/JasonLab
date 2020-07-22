@@ -1,4 +1,4 @@
-package lab.spring;
+package lab.test.spring;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

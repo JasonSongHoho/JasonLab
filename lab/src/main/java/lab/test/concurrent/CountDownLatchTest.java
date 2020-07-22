@@ -1,4 +1,4 @@
-package lab.concurrent;
+package lab.test.concurrent;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 

@@ -1,4 +1,4 @@
-package lab.lombok;
+package lab.test.lombok;
 
 import com.alibaba.fastjson.JSON;
 import lombok.*;
