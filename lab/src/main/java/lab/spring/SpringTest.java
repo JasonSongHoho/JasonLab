@@ -1,9 +1,10 @@
-package lab.test;
+package lab.spring;
 
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 
@@ -18,7 +19,7 @@ import java.util.Map;
 @Slf4j
 public class SpringTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RuntimeException {
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 将当前类 作为配置类（Configuration Class）
@@ -30,7 +31,7 @@ public class SpringTest {
         Map<String, SessionDTO> beansOfType = applicationContext.getBeansOfType(SessionDTO.class);
 
         beansOfType.forEach((key, value) -> log.info("beansOfType key:{},value:{}", key, JSON.toJSONString(value)));
-
+//        applicationContext.publishEvent();
         applicationContext.close();
 
     }
