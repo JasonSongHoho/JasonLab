@@ -2,9 +2,6 @@
 //
 //import cn.hutool.core.date.DateUtil;
 //import com.google.common.util.concurrent.ThreadFactoryBuilder;
-//import com.souche.voipasr.dao.impl.AuthDaoImpl;
-//import com.souche.voipasr.entity.AuthDO;
-//import com.souche.voipasr.service.TestTransactional;
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Component;
