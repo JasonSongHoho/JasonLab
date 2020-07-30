@@ -22,19 +22,19 @@ public class PipedWriteTest {
 
         // 做个链接才能通讯
         pipedReader.connect(pipedWriter);
-        ThradPipedReaderA a = new ThradPipedReaderA(pipedReader);
-        ThradPipedWriteB b = new ThradPipedWriteB(pipedWriter);
+        ThreadPipedReaderA a = new ThreadPipedReaderA(pipedReader);
+        ThreadPipedWriteB b = new ThreadPipedWriteB(pipedWriter);
         a.start();
         b.start();
 
     }
 
-    public static class ThradPipedReaderA extends Thread {
+    public static class ThreadPipedReaderA extends Thread {
 
         PipedReader pipedReader;
 
 
-        public ThradPipedReaderA(PipedReader pipedReader) {
+        public ThreadPipedReaderA(PipedReader pipedReader) {
             this.pipedReader = pipedReader;
         }
 
@@ -43,11 +43,11 @@ public class PipedWriteTest {
 
             try {
                 char[] chararray = new char[20];
-                int readLenth = pipedReader.read(chararray);
-                while (readLenth != -1) {
-                    String str = new String(chararray, 0, readLenth);
+                int readLength = pipedReader.read(chararray);
+                while (readLength != -1) {
+                    String str = new String(chararray, 0, readLength);
                     System.out.println("读到的数据为：" + str);
-                    readLenth = pipedReader.read(chararray);
+                    readLength = pipedReader.read(chararray);
 
                 }
                 pipedReader.close();
@@ -58,12 +58,12 @@ public class PipedWriteTest {
         }
     }
 
-    public static class ThradPipedWriteB extends Thread {
+    public static class ThreadPipedWriteB extends Thread {
 
         PipedWriter pipedWriter;
 
 
-        public ThradPipedWriteB(PipedWriter pipedWriter) {
+        public ThreadPipedWriteB(PipedWriter pipedWriter) {
             this.pipedWriter = pipedWriter;
         }
 
