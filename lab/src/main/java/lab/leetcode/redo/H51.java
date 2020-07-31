@@ -1,4 +1,4 @@
-package lab.leetcode.jzoffer;
+package lab.leetcode.redo;
 
 /**
  * 剑指 Offer 51. 数组中的逆序对
@@ -25,6 +25,7 @@ package lab.leetcode.jzoffer;
 
 
 public class H51 {
+
     public static void main(String[] args) {
 
     }
