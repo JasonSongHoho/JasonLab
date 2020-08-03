@@ -27,20 +27,19 @@ public class E415 {
         int temp = 0;
         StringBuilder result = new StringBuilder();
         int i = num1.length() - 1, j = num2.length() - 1;
+        int total;
         for (; i >= 0 && j >= 0; i--, j--) {
-            char c1 = num1.charAt(i);
-            char c2 = num2.charAt(j);
-            int total = temp + c1 - '0' + c2 - '0';
+            total = temp + num1.charAt(i) - '0' + num2.charAt(j) - '0';
             temp = total / 10;
             result.append(total % 10);
         }
         for (; i >= 0; i--) {
-            int total = temp + num1.charAt(i) - '0';
+            total = temp + num1.charAt(i) - '0';
             temp = total / 10;
             result.append(total % 10);
         }
         for (; j >= 0; j--) {
-            int total = temp + num2.charAt(j) - '0';
+            total = temp + num2.charAt(j) - '0';
             temp = total / 10;
             result.append(total % 10);
         }
