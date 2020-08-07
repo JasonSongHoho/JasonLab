@@ -14,9 +14,7 @@ public class LambadaTest {
     }
 
     public static void main(String[] args) {
-        LambadaTest lambadaTest = new LambadaTest(src -> {
-            System.out.println(src);
-        });
+        LambadaTest lambadaTest = new LambadaTest(src -> System.out.println(src));
         lambadaTest.demoInterface.demoMethod("hello");
 
     }
