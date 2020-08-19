@@ -1,4 +1,4 @@
-package lab.leetcode.common;
+package lab.test.concurrent;
 
 import cn.hutool.core.thread.ThreadUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +11,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * 自己实现一个阻塞队列
+ *
  * @author jasonsong
  * 2020/6/29
  */
