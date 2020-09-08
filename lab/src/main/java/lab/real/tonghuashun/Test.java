@@ -1,4 +1,4 @@
-package lab.tonghuashun;
+package lab.real.tonghuashun;
 
 import java.util.Arrays;
 
