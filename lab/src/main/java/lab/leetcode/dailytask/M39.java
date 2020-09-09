@@ -57,9 +57,7 @@ public class M39 {
     }
 
     private void recur(List<Integer> item, int index, int[] candidates, int target) {
-        if (target < candidates[0]) {
-            return;
-        } else {
+        if (target >= candidates[0]) {
             for (int i = index; i < candidates.length; i++) {
                 List<Integer> temp = new ArrayList<>(item);
                 int candidate = candidates[i];
