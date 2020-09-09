@@ -1,6 +1,7 @@
 package lab.leetcode;
 
 import lab.leetcode.common.TreeNode;
+import lab.leetcode.common.TreeSerialize;
 
 /**
  * 104. 二叉树的最大深度
@@ -26,8 +27,9 @@ import lab.leetcode.common.TreeNode;
 
 
 public class E104 {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        System.out.println(maxDepth(TreeSerialize.deserialize("[3,9,20,null,null,15,7]")));
     }
 
     public static int maxDepth(TreeNode root) {
@@ -45,5 +47,22 @@ public class E104 {
         depth += Math.max(depth1, depth2);
         return depth;
     }
+
+    private int maxLen = 0;
+    public int maxDepth1(TreeNode root) {
+        maxLen = 0;
+        recur(root, 0);
+        return maxLen;
+    }
+
+    private void recur(TreeNode node, int depth) {
+        if (node == null) {
+            maxLen = Math.max(maxLen, depth);
+            return;
+        }
+        recur(node.left, depth + 1);
+        recur(node.right, depth + 1);
+    }
+
 
 }
