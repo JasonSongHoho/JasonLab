@@ -1,4 +1,4 @@
-package lab.real.neteast;
+package lab.real.netease;
 
 import java.util.HashSet;
 import java.util.Set;
