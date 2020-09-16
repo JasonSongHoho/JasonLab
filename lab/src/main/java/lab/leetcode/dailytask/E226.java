@@ -41,18 +41,14 @@ public class E226 {
     }
 
     private void dfs(TreeNode node, TreeNode result) {
-        if (node != null) {
-            result.val = node.val;
-            if (node.left != null) {
-                result.right = new TreeNode(0);
-                dfs(node.left, result.right);
-            }
-            if (node.right != null) {
-                result.left = new TreeNode(0);
-                dfs(node.right, result.left);
-            }
-        } else {
-            result = null;
+        result.val = node.val;
+        if (node.left != null) {
+            result.right = new TreeNode(0);
+            dfs(node.left, result.right);
+        }
+        if (node.right != null) {
+            result.left = new TreeNode(0);
+            dfs(node.right, result.left);
         }
     }
 }
