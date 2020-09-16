@@ -36,29 +36,30 @@ import java.util.Arrays;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] arr = {10, 6, 3, 8, 33, 27, 66, 9, 7, 88};
+//        int[] arr = {10, 6, 6, 3, 8, 33, 27, 66, 9, 9, 7, 88};
+        int[] arr = {11, 44, 23, 67, 88, 65, 34, 48, 9, 12};
         sort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
     }
 
 
     public static void sort(int[] arr, int start, int end) {
-        if (start >= end) {
-            return;
-        }
-        int l = start, h = end, base = arr[l];
-        while (l < h) {
-            while (l < h && base <= arr[h]) {
-                h--;
+        if (start < end) {
+            int l = start, h = end, base = arr[l];
+            while (l < h) {
+                while (l < h && base <= arr[h]) {
+                    h--;
+                }
+                arr[l] = arr[h];
+                while (l < h && base >= arr[l]) {
+                    l++;
+                }
+                arr[h] = arr[l];
             }
-            arr[l] = arr[h];
-            while (l < h && base >= arr[l]) {
-                l++;
-            }
-            arr[h] = arr[l];
+            arr[l] = base;
+            sort(arr, start, l - 1);
+            sort(arr, l + 1, end);
         }
-        arr[l] = base;
-        sort(arr, start, l - 1);
-        sort(arr, l + 1, end);
     }
+
 }
