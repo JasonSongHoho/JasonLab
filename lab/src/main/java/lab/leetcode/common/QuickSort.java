@@ -1,6 +1,8 @@
 package lab.leetcode.common;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * // 快速排序，A是数组，n表示数组的大小
@@ -59,6 +61,9 @@ public class QuickSort {
             arr[l] = base;
             sort(arr, start, l - 1);
             sort(arr, l + 1, end);
+            List<Integer> list = new LinkedList<>();
+            Integer integer = 1;
+            list.remove(integer);
         }
     }
 

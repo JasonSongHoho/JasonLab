@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 15. 三数之和
@@ -34,9 +36,41 @@ import java.util.List;
 public class M15 {
 
     public static void main(String[] args) {
-        int[] nums = {-1, 0, 1, 2, -1, -4};
-        int[] nums1 = {-1, 0, 1, 2, -1, -4, 4, 6, 7, 8, 23, -11, 12, -12, 0, 0, -15, -5, 20, 11, 9, -20};
-        System.out.println(JSON.toJSONString(threeSum(nums1)));
+        System.out.println(threeSum(new int[]{}));
+        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+        System.out.println(threeSum(new int[]{-2, 0, 1, 1, 2}));
+        System.out.println(threeSum(new int[]{-1, 0, 0, 0, 0, 1, 3, -1, -4, -2, -2, -3, 2, 4}));
+    }
+
+    public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Set<String> set = new HashSet<>();
+        if (nums == null || nums.length < 3) {
+            return result;
+        }
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 2; i++) {
+            for (int j = i + 1, k = nums.length - 1; j < k; ) {
+                int total = nums[i] + nums[j] + nums[k];
+                if (total == 0) {
+                    String key = "" + nums[i] + "," + nums[j] + "," + nums[k];
+                    if (!set.contains(key)) {
+                        List<Integer> item = new ArrayList<>();
+                        item.add(nums[i]);
+                        item.add(nums[j]);
+                        item.add(nums[k]);
+                        result.add(item);
+                        set.add(key);
+                    }
+                    j++;
+                } else if (total > 0) {
+                    k--;
+                } else {
+                    j++;
+                }
+            }
+        }
+        return result;
     }
 
 
@@ -99,7 +133,7 @@ public class M15 {
      * @param nums
      * @return
      */
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public static List<List<Integer>> threeSum2(int[] nums) {
         int n = nums.length;
         Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
