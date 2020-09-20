@@ -9,9 +9,10 @@ package lab.leetcode.bytedance;
 public class M43 {
     public static void main(String[] args) {
         //6
-        System.out.println(multiply("2", "3"));
+        System.out.println(multiply("2", "3").equals("" + 2 * 3));
         //3071640
-        System.out.println(multiply("312", "9845"));
+        System.out.println(multiply("312", "9845").equals("" + 312 * 9845));
+        System.out.println(multiply("12", "9845").equals("" + 12 * 9845));
         //726
         System.out.println(multiply("22", "33"));
         //100
@@ -24,40 +25,77 @@ public class M43 {
         System.out.println(multiply("99", "99"));
     }
 
-
-    /**
-     * 执行用时：
-     * 4 ms
-     * , 在所有 Java 提交中击败了
-     * 90.95%
-     * 的用户
-     * @param num1
-     * @param num2
-     * @return
-     */
     public static String multiply(String num1, String num2) {
         if ((num1.length() == 1 && Integer.valueOf(num1) == 0) ||
                 (num2.length() == 1 && Integer.valueOf(num2) == 0)) {
             return "0";
         }
-        int[] res = new int[num1.length() + num2.length()];
-        for (int i = num1.length() - 1; i >= 0; i--) {
-            int n1 = num1.charAt(i) - '0';
-            for (int j = num2.length() - 1; j >= 0; j--) {
-                int n2 = num2.charAt(j) - '0';
-                int sum = (res[i + j + 1] + n1 * n2);
-                res[i + j + 1] = sum % 10;
-                res[i + j] += sum / 10;
+        char[] char1 = num1.toCharArray();
+        char[] char2 = num2.toCharArray();
+        int[] result = new int[char1.length + char2.length + 2];
+        for (int i = char1.length - 1; i >= 0; i--) {
+            for (int j = char2.length - 1; j >= 0; j--) {
+                int m = char1[i] - '0', n = char2[j] - '0';
+                int pos = char1.length - 1 - i + char2.length - 1 - j;
+                int value = m * n;
+                while (value > 0) {
+                    int v = result[pos];
+                    v += value;
+                    result[pos++] = v % 10;
+                    value = v / 10;
+                }
             }
         }
-
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < res.length; i++) {
-            if (i == 0 && res[i] == 0) continue;
-            result.append(res[i]);
+        StringBuilder sb = new StringBuilder();
+        for (int i : result) {
+            sb.insert(0, i);
         }
-        return result.toString();
+        int start = 0;
+        for (int i = 0; i < sb.length(); i++) {
+            if (sb.charAt(i) == '0'){
+                start++;
+            }else {
+                break;
+            }
+        }
+        return sb.substring(start);
     }
+
+//
+//
+//    /**
+//     * 执行用时：
+//     * 4 ms
+//     * , 在所有 Java 提交中击败了
+//     * 90.95%
+//     * 的用户
+//     * @param num1
+//     * @param num2
+//     * @return
+//     */
+//    public static String multiply(String num1, String num2) {
+//        if ((num1.length() == 1 && Integer.valueOf(num1) == 0) ||
+//                (num2.length() == 1 && Integer.valueOf(num2) == 0)) {
+//            return "0";
+//        }
+//        int[] res = new int[num1.length() + num2.length()];
+//        for (int i = num1.length() - 1; i >= 0; i--) {
+//            int n1 = num1.charAt(i) - '0';
+//            for (int j = num2.length() - 1; j >= 0; j--) {
+//                int n2 = num2.charAt(j) - '0';
+//                int sum = (res[i + j + 1] + n1 * n2);
+//                res[i + j + 1] = sum % 10;
+//                res[i + j] += sum / 10;
+//            }
+//        }
+//
+//        StringBuilder result = new StringBuilder();
+//        for (int i = 0; i < res.length; i++) {
+//            if (i == 0 && res[i] == 0) continue;
+//            result.append(res[i]);
+//        }
+//        return result.toString();
+//    }
 
     /**
      * 执行用时：
@@ -103,9 +141,6 @@ public class M43 {
         }
         return result.toString();
     }
-
-
-
 
 
     private static void setVal(int[] cache, int index, int value) {
