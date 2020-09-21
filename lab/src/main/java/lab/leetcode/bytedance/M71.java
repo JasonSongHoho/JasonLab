@@ -1,6 +1,7 @@
 package lab.leetcode.bytedance;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * 71. 简化路径
@@ -59,6 +60,35 @@ public class M71 {
     }
 
     public static String simplifyPath(String path) {
+        if (path == null) {
+            return null;
+        }
+        String[] split = path.split("/");
+        Stack<String> stack = new Stack<>();
+        for (String folder : split) {
+            if (folder.length() > 0 && !folder.equals(".")) {
+                if (folder.equals("..")) {
+                    if (!stack.isEmpty()) {
+                        stack.pop();
+                    }
+                } else {
+                    stack.push(folder);
+                }
+            }
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        while (!stack.isEmpty()) {
+            String folder = stack.pop();
+            stringBuilder.insert(0, "/" + folder);
+        }
+        if (stringBuilder.length() == 0){
+            return "/";
+        }else {
+            return stringBuilder.toString();
+        }
+    }
+
+    public static String simplifyPath1(String path) {
         LinkedList<String> pathStack = new LinkedList<>();
         String[] split = path.split("/");
         for (int i = 0; i < split.length; i++) {

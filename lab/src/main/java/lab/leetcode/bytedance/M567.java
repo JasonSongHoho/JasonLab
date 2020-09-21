@@ -34,6 +34,9 @@ import java.util.Map;
 
 public class M567 {
     public static void main(String[] args) {
+
+        System.out.println(checkInclusion("hello", "ooolleoooleh"));
+
         //true
         System.out.println(checkInclusion("a", "ab"));
         //true start:3,end:4
@@ -52,6 +55,55 @@ public class M567 {
         System.out.println(checkInclusion("aabccb", "dacabccaba"));
     }
 
+    public static boolean checkInclusion(String s1, String s2) {
+        Map<Character, Integer> dic = new HashMap<>();
+        for (int i = 0; i < s1.length(); i++) {
+            increase(dic, s1.charAt(i));
+        }
+        Map<Character, Integer> flowWindow = new HashMap<>();
+        Map<Character, Integer> temp = new HashMap<>(dic);
+        int lastStart = -1;
+        for (int i = 0; i < s2.length(); i++) {
+            char c = s2.charAt(i);
+            if (temp.containsKey(c)) {
+                decrease(temp, c);
+                if (temp.size() == 0) {
+                    return true;
+                }
+                increase(flowWindow, c);
+                if (lastStart == -1) {
+                    lastStart = i;
+                }
+            } else if (!flowWindow.containsKey(c)) {
+                flowWindow = new HashMap<>();
+                temp = new HashMap<>(dic);
+                lastStart = i + 1;
+            } else {
+                char c1;
+                while ((c1 = s2.charAt(lastStart++)) != c) {
+                    decrease(flowWindow, c1);
+                    increase(temp, c1);
+                }
+            }
+        }
+        return false;
+    }
+
+
+    private static void increase(Map<Character, Integer> map, char c) {
+        int count = map.getOrDefault(c, 0);
+        map.put(c, ++count);
+    }
+
+    private static void decrease(Map<Character, Integer> map, char c) {
+        int count = map.get(c);
+        if (count == 1) {
+            map.remove(c);
+        } else {
+            map.put(c, --count);
+        }
+    }
+
     /**
      * 桶排序 + 滑动窗口
      *
@@ -59,7 +111,7 @@ public class M567 {
      * @param s2
      * @return
      */
-    public static boolean checkInclusion(String s1, String s2) {
+    public static boolean checkInclusion2(String s1, String s2) {
         if (s1.length() == 1) {
             return s2.contains(s1);
         }
