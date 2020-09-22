@@ -24,12 +24,51 @@ import java.util.List;
 public class M93 {
     public static void main(String[] args) {
         System.out.println(restoreIpAddresses("0000"));
-        System.out.println(restoreIpAddresses("255255111135"));
+        System.out.println(restoreIpAddresses1("255255111135"));
         System.out.println(restoreIpAddresses("010010"));
-        System.out.println(restoreIpAddresses("25525511135"));
+        System.out.println(restoreIpAddresses1("25525511135"));
     }
 
+
     public static List<String> restoreIpAddresses(String s) {
+        int length = s.length();
+        List<String> result = new ArrayList<>();
+        if (length < 4 || length > 12) {
+            return result;
+        }
+        for (int i = Math.max(1, length - 9); i < 4 && i < length - 2; i++) {
+            String s1 = s.substring(0, i);
+            if (!canPass(s1)) {
+                continue;
+            }
+            for (int j = Math.max(i + 1, length - 6); j < i + 4 && j < length - 1; j++) {
+                String s2 = s.substring(i, j);
+                if (!canPass(s2)) {
+                    continue;
+                }
+                for (int k = Math.max(j + 1, length - 3); k < j + 4 && k < length; k++) {
+                    String s3 = s.substring(j, k);
+                    String s4 = s.substring(k, length);
+                    if (canPass(s3) && canPass(s4)) {
+                        result.add(s1 + "." + s2 + "." + s3 + "." + s4);
+                    }
+
+                }
+            }
+        }
+        return result;
+    }
+
+    private static boolean canPass(String str) {
+        if (str.length() > 1 && str.startsWith("0")) {
+            return false;
+        }
+        int value = Integer.valueOf(str);
+        return value <= 255;
+    }
+
+
+    public static List<String> restoreIpAddresses1(String s) {
         int length = s.length();
         if (length > 12 || length < 4) {
             return new ArrayList<>();
