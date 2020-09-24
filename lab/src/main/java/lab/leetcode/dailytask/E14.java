@@ -35,7 +35,30 @@ public class E14 {
         System.out.println(longestCommonPrefix(strs2));
     }
 
+    /**
+     * 纵向比较
+     *
+     * @param strs
+     * @return
+     */
     public static String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < strs[0].length(); i++) {
+            char c = strs[0].charAt(i);
+            for (int j = 1; j < strs.length; j++) {
+                if (i >= strs[j].length() || c != strs[j].charAt(i)) {
+                    return stringBuilder.toString();
+                }
+            }
+            stringBuilder.append(c);
+        }
+        return stringBuilder.toString();
+    }
+
+    public static String longestCommonPrefix1(String[] strs) {
         if (strs.length < 1) {
             return "";
         } else if (strs.length == 1) {
