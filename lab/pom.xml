@@ -9,7 +9,7 @@
     <version>1.0</version>
 
     <properties>
-        <java.version>${java.version}</java.version>
+        <java.version>1.8</java.version>
         <project.encoding>utf-8</project.encoding>
     </properties>
     <dependencies>
