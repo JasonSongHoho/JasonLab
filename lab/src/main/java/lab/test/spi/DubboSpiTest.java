@@ -1,6 +1,7 @@
 package lab.test.spi;
 
-import com.alibaba.dubbo.common.extension.ExtensionLoader;
+
+import org.apache.dubbo.common.extension.ExtensionLoader;
 
 /**
  * @author jasonsong
