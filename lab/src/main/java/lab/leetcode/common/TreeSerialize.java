@@ -46,7 +46,7 @@ public class TreeSerialize {
         if (val.equals("null")) {
             return null;
         }
-        return new TreeNode(Integer.valueOf(val));
+        return new TreeNode(Integer.parseInt(val));
     }
 
     public static void main(String[] args) {
@@ -65,13 +65,12 @@ public class TreeSerialize {
             if (cur == null) {
                 res.append("null,");
             } else {
-                res.append(cur.val + ",");
+                res.append(cur.val).append(",");
                 queue.add(cur.left);
                 queue.add(cur.right);
             }
         }
         res.setLength(res.length() - 1);
-        res.append("]");
-        return res.toString();
+        return res.append("]").toString();
     }
 }
