@@ -1,4 +1,4 @@
-package lab.leetcode;
+package lab.leetcode.dailytask;
 
 import java.util.ArrayList;
 import java.util.List;

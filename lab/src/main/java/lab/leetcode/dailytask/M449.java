@@ -1,4 +1,4 @@
-package lab.leetcode;
+package lab.leetcode.dailytask;
 
 import lab.leetcode.common.TreeNode;
 import lab.leetcode.common.TreeSerialize;
