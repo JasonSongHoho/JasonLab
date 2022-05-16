@@ -25,7 +25,7 @@ package lab.leetcode.dailytask;
  * @author Jason/XiaoJie
  * @date 2022/5/13
  */
-public class MST_M_01_05 {
+public class MSJD_M_01_05 {
     public boolean oneEditAway(String first, String second) {
         int lf = first.length();
         int ls = second.length();
