@@ -52,4 +52,51 @@ public class M3 {
         max = Math.max(max, flowWindow.size());
         return max;
     }
+
+    /**
+     * 执行结果：
+     * 通过
+     * 显示详情
+     * 添加备注
+     *
+     * 执行用时：
+     * 5 ms
+     * , 在所有 Java 提交中击败了
+     * 60.24%
+     * 的用户
+     * 内存消耗：
+     * 41.3 MB
+     * , 在所有 Java 提交中击败了
+     * 73.85%
+     * 的用户
+     * 通过测试用例：
+     * 987 / 987
+     *
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring1(String s) {
+        if(s == null || s.isEmpty()){
+            return 0;
+        }
+        int len = s.length();
+        if (len == 1){
+            return 1;
+        }
+        int maxLen = 1;
+        Set<Character> set = new HashSet<>();
+        set.add(s.charAt(0));
+        for(int left = 0, right = 1; right < len; ){
+            char c = s.charAt(right);
+            while (set.contains(c)) {
+                set.remove(s.charAt(left++));
+            }
+            set.add(c);
+            maxLen = Math.max(maxLen, set.size());
+            right++;
+        }
+        return maxLen;
+
+    }
+
 }
