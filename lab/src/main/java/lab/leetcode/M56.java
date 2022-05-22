@@ -2,6 +2,8 @@ package lab.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -35,7 +37,7 @@ public class M56 {
     public int[][] merge(int[][] intervals) {
         int n = intervals.length;
         Arrays.sort(intervals, (a, b) -> (a[0] - b[0]));
-        List<int[]> resultList = new ArrayList<>();
+        List<int[]> resultList = new LinkedList<>();
         int[] lastInterval = intervals[0];
         int[] curInterval;
         resultList.add(lastInterval);
@@ -48,10 +50,11 @@ public class M56 {
                 lastInterval = curInterval;
             }
         }
-        n = resultList.size();
         int[][] result = new int[n][2];
-        for (int i = 0; i < n; i++) {
-            result[i] = resultList.get(i);
+        Iterator<int[]> iterator = resultList.iterator();
+        int i = 0;
+        while (iterator.hasNext()){
+            result[i++] = iterator.next();
         }
         return result;
     }
