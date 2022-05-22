@@ -36,10 +36,11 @@ import java.util.Set;
 public class M15 {
 
     public static void main(String[] args) {
-        System.out.println(threeSum(new int[]{}));
-        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
-        System.out.println(threeSum(new int[]{-2, 0, 1, 1, 2}));
-        System.out.println(threeSum(new int[]{-1, 0, 0, 0, 0, 1, 3, -1, -4, -2, -2, -3, 2, 4}));
+        System.out.println(threeSum2(new int[]{}));
+        System.out.println(threeSum2(new int[]{-1, 0, 1, 2, -1, -4}));
+        System.out.println(threeSum2(new int[]{-2, 0, 1, 1, 2}));
+        System.out.println(threeSum2(new int[]{-1, 0, 0, 0, 0, 1, 3, -1, -4, -2, -2, -3, 2, 4}));
+        System.out.println(threeSum2(new int[]{-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4}));
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
