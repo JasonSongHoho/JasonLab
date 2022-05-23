@@ -30,6 +30,7 @@ public class D146 {
         public LRUCache(int capacity) {
             this.capacity = capacity;
             map = new LinkedHashMap<>(capacity, 0.75F, true);
+            map = new LinkedHashMap<>(capacity);
         }
 
         public int get(int key) {

@@ -38,7 +38,7 @@ public class E125 {
 
     }
 
-    public static boolean isPalindrome(String s) {
+    public static boolean isPalindrome1(String s) {
         if (s == null || s.isEmpty()) {
             return true;
         }
@@ -74,5 +74,52 @@ public class E125 {
 
     public static boolean isStringOrNum(Integer cValue) {
         return ((cValue >= v0 && cValue <= v9) || (cValue >= va && cValue <= vz) || (cValue >= vA && cValue <= vZ));
+    }
+
+
+    static int diff = 'A' - 'a';
+    public static boolean isPalindrome(String s) {
+        int n = s.length();
+        char lc, rc;
+        for(int l = 0, r = n - 1; l < r; ){
+            lc = s.charAt(l);
+            if(!isLetter(lc)){
+                ++l;
+                continue;
+            }
+            rc = s.charAt(r);
+            if(!isLetter(rc)){
+                --r;
+                continue;
+            }
+            if(!compare(lc, rc)){
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
+    }
+
+    private static boolean isLetter(char c){
+        return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+    }
+
+    private static boolean compare(char c1, char c2) {
+        if (c1 >= '0' && c1 <= '9') {
+            return c1 == c2;
+        } else if (c1 >= 'A' && c1 <= 'Z') {
+            if (c2 >= 'A' && c2 <= 'Z') {
+                return c1 == c2;
+            } else {
+                return c1 - c2 == diff;
+            }
+        } else {
+            if (c2 >= 'A' && c2 <= 'Z') {
+                return c2 - c1 == diff;
+            } else {
+                return c1 == c2;
+            }
+        }
     }
 }
