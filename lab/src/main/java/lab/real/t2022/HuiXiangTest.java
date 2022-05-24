@@ -1,4 +1,4 @@
-package lab.real;
+package lab.real.t2022;
 
 import lombok.extern.slf4j.Slf4j;
 
