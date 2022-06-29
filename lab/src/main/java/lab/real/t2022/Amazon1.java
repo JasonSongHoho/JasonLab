@@ -6,6 +6,42 @@ import java.util.LinkedList;
 import java.util.Map;
 
 /**
+ * /**
+ * *
+ * * 我们需要帮助员工在亚马逊找mentor。这个mentor需要在员工的 4 层好友中寻找到相同职位，职级更高的员工。
+ * 我们有一个API getFriends（Emp employee） 会回一个好友列表 (list). 这个列表就是员工的1 层好友。
+ * 朋友的朋友是2层好友。
+ * <p>
+ * // We are working on an application that helps find mentors for Amazon employees.
+ * // We want to make recommendations for people that are within 4 (N) degrees of an employee's circle of friends.
+ * // mentors have the same role and are more senior than the requested employee.
+ * // We are given an API call to get the information about friends for an employee.
+ * <p>
+ * // Write a method that will take an Employee and return a list of IDs of recommended mentors.
+ * <p>
+ * /**
+ * * This call is provided to you.
+ * * Returns only the other employees immediately known to the given employee
+ * // *List<Emp> getFriends(Emp employee);
+ * //        *
+ * //        *
+ * //        *
+ * //
+ * //class Emp {
+ * // *
+ * //    long id;
+ * // *
+ * //    String name;
+ * // *
+ * //    String title; // This will match across employees with the same job.
+ * // *
+ * //    int level; // A higher number means more senior
+ * // *
+ * //}
+ * // *
+ * //         * // Method to implement
+ * //         *List<Emp> getSuggestedMentors(Emp loggedIn);
+ *
  * @author Jason/XiaoJie
  * @date 2022/6/29
  */
